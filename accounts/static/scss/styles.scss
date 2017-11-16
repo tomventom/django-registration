@@ -1,0 +1,8 @@
+.navbar {
+    ul li {
+        @media screen and (min-width: 720px) {
+            text-align: center;
+            min-width: 60px;
+        }
+    }
+}

@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block content %}
+    {% include "snippets/navlist.html" %}
+
+    <div class="container mt-5">
+
+            <h1>Register</h1>
+            <hr>
+            {% if form.email.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.email.errors.as_text }}
+            </div>
+            {% endif %}
+            {% if form.full_name.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.full_name.errors.as_text }}
+            </div>
+            {% endif %}
+            {% if form.password2.errors %}
+            <div class="alert alert-danger" role="alert">
+                {{ form.password2.errors.as_text }}
+            </div>
+            {% endif %}
+            <form class="col-md-3 pl-0" method="post">
+                {% csrf_token %}
+                <div class="form-group">
+                    {{ form.email.label_tag }}
+                    {{ form.email }}
+                </div>
+                <div class="form-group">
+                    {{ form.full_name.label_tag }}
+                    {{ form.full_name }}
+                </div>
+                <div class="form-group">
+                    {{ form.password1.label_tag }}
+                    {{ form.password1 }}
+                </div>
+                <div class="form-group">
+                    {{ form.password2.label_tag }}
+                    {{ form.password2 }}
+                    <small id="password2Help" class="form-text text-muted">{{ form.password2.help_text }}</small>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary mt-3" type="submit">Sign up</button>
+                </div>
+            </form>
+
+    </div>
+    <script>
+        $('input').addClass('form-control');
+    </script>
+{% endblock %}
